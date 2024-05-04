@@ -32,11 +32,11 @@ controls.rotateSpeed = 0.35; // Velocidade de rotação dos controles
 
 camera.position.z = 30;
 
-mtlLoader.load('public/exemplo3D.mtl', function (materials) {
+mtlLoader.load('public/projeto-principal-garagem.mtl', function (materials) {
     materials.preload();
     objLoader.setMaterials(materials);
 
-    objLoader.load('public/exemplo3D.obj', function (object) {
+    objLoader.load('public/projeto-principal-garagem.obj', function (object) {
         console.log('Modelo 3D carregado:', object);
         // Remova a imagem de placeholder quando o modelo 3D for carregado
         const placeholder = document.getElementById('placeholder');
@@ -44,6 +44,9 @@ mtlLoader.load('public/exemplo3D.mtl', function (materials) {
 
         // Adicione o modelo à cena
         scene.add(object);
+
+        // Verifique se as texturas foram carregadas corretamente
+        console.log('Texturas do modelo:', object.children[0].material);
     }, undefined, function (error) {
         console.error('Erro ao carregar o modelo 3D:', error);
     });
